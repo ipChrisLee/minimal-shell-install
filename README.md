@@ -10,7 +10,8 @@ This installation only supports linux for now (i.e. only sync with linux-port fr
 
 To run this, just:
 ```
-bash <(curl -s https://github.com/ipChrisLee/minimal-shell-install/blob/master/run.sh)
+bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
+
 ```
 
 I public this repo in GitHub is just to make myself convenient. This is not a repo for open-source community.
