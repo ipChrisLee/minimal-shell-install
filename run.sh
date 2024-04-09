@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source config.sh
-
 # -------- check exe --------
 function check_exe {
 	if (which "$1" > /dev/null 2>&1); then
