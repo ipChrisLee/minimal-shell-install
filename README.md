@@ -7,3 +7,10 @@ This project depends on `.iplee-conf` and `.iplee-exe`. This a trade-off. Ideall
 But for better dependence management, this project includes a `depend.yaml` file, to index the commit-hash/repo-url of the dependency and some other configs.
 
 This installation only supports linux for now (i.e. only sync with linux-port from .iplee-conf).
+
+To run this, just:
+```
+bash <(curl -s https://github.com/ipChrisLee/minimal-shell-install/blob/master/run.sh)
+```
+
+I public this repo in GitHub is just to make myself convenient. This is not a repo for open-source community.
