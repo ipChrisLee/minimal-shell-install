@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
+SHELL ["/bin/bash", "-c"]
+
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
 ARG ALL_PROXY
@@ -32,18 +34,18 @@ RUN if [ -n "$timeZone" ]; then ln -sf "/usr/share/zoneinfo/${timeZone}" /etc/lo
 # ------------ /etc/environment for env var ------------
 # ---- from /docker/workspace-env.sh.
 COPY /docker/workspace-env.sh /tmp/
-RUN sed -i -e "s|WRAPPER_HTTP_PROXY|${HTTP_PROXY}|" /tmp/env-export.sh
-RUN sed -i -e "s|WRAPPER_HTTPS_PROXY|${HTTPS_PROXY}|" /tmp/env-export.sh
-RUN sed -i -e "s|WRAPPER_ALL_PROXY|${ALL_PROXY}|" /tmp/env-export.sh
-RUN sed -i -e "s|WRAPPER_NO_PROXY|${NO_PROXY}|" /tmp/env-export.sh
-RUN cat /tmp/env-export.sh >> /etc/environment
+RUN sed -i -e "s|WRAPPER_HTTP_PROXY|${HTTP_PROXY}|" /tmp/workspace-env.sh
+RUN sed -i -e "s|WRAPPER_HTTPS_PROXY|${HTTPS_PROXY}|" /tmp/workspace-env.sh
+RUN sed -i -e "s|WRAPPER_ALL_PROXY|${ALL_PROXY}|" /tmp/workspace-env.sh
+RUN sed -i -e "s|WRAPPER_NO_PROXY|${NO_PROXY}|" /tmp/workspace-env.sh
+RUN cat /tmp/workspace-env.sh >> /etc/environment
 RUN echo 'source /etc/environment' >> /root/.bashrc
 
 # ------------ minimal shell install ------------
 RUN bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
 
 # ------------ entrypoint ------------
-COPY /docker-def/entrypoint.sh /install
+COPY /docker/entrypoint.sh /install
 ENTRYPOINT ["/install/entrypoint.sh"]
 
 # ------------ run ------------

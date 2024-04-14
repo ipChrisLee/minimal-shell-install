@@ -53,5 +53,5 @@ self-conf/install-nvim.sh
 self-conf/configure-nvim.sh
 
 # ---- .iplee-exe
-cd ${HOME}/.iplee-exe; git fetch origin; git checkout "${ipleeConfHash}"
+cd ${HOME}/.iplee-exe; git fetch origin; git checkout "${ipleeExeHash}"
 self-install/install-oog-key-interactive.sh
