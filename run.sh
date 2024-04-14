@@ -44,7 +44,7 @@ fi
 
 # ------------ run ------------
 echo "Log in gh with 'msi' token..."
-echo $msiGhKey | gh auth login --with-token
+echo "$msiGhKey" | gh auth login --with-token
 
 echo "Cloning necassary repos..."
 cd ${HOME}; gh repo clone .iplee-conf; gh repo clone .iplee-exe
