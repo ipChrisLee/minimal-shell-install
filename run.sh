@@ -6,9 +6,12 @@ export ipleeExeHash="406449cd2330dcfd913107b7066c7aced9aeda28"
 
 # ------------ install nessasary packages ------------
 if ! (which sudo > /dev/null 2>&1); then
+	apt-get update
 	apt-get install sudo -y
+else
+	sudo apt-get update
 fi
-sudo apt-get install curl wget python3 -y
+sudo apt-get install curl git wget python3 -y
 
 # ------------ check/install exe ------------
 function check_exe {
@@ -25,8 +28,8 @@ if ! (check_exe gh); then
 	sudo mkdir -p -m 755 /etc/apt/keyrings && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
 		&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
 		&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-		&& sudo apt update \
-		&& sudo apt install gh -y
+		&& sudo apt-get update \
+		&& sudo apt-get install gh -y
 fi
 
 if ! (check_exe zsh); then
@@ -54,4 +57,5 @@ self-conf/configure-nvim.sh
 
 # ---- .iplee-exe
 cd ${HOME}/.iplee-exe; git fetch origin; git checkout "${ipleeExeHash}"
+rm key/oog-proxy.sh
 self-install/install-oog-key-interactive.sh
