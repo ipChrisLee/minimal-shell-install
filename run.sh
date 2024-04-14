@@ -72,5 +72,4 @@ self-conf/configure-nvim.sh
 cd ${HOME}/.iplee-exe
 git fetch origin
 git checkout "${ipleeExeHash}"
-rm key/oog-proxy.sh
 self-install/install-oog-key-interactive.sh
