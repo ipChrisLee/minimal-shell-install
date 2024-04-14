@@ -3,8 +3,8 @@
 set -e
 
 # ------------ configs ------------
-export ipleeConfHash="21e892002d8efc71c4bbc42ee50036b834bd04ce"
-export ipleeExeHash="406449cd2330dcfd913107b7066c7aced9aeda28"
+export ipleeConfHash="linux-msi-port"
+export ipleeExeHash="master"
 
 # ------------ install nessasary packages ------------
 if ! (which sudo > /dev/null 2>&1); then
@@ -13,7 +13,7 @@ if ! (which sudo > /dev/null 2>&1); then
 else
 	sudo apt-get update
 fi
-sudo apt-get install curl git wget python3 -y
+sudo apt-get install curl git wget python3 build-essential -y
 
 # ------------ check/install exe ------------
 function check_exe {
