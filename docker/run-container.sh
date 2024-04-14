@@ -5,6 +5,7 @@ if [ ! -f "docker/anchor" ] || [ "`head -1 docker/anchor`" != "docker | msi-test
 
 docker run \
     --name=msi-test \
+	--hostname=msi-test \
     --network=host \
     --cap-add=SYS_PTRACE \
     --security-opt seccomp=unconfined \
