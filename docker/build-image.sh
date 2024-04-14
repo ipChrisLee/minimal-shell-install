@@ -26,5 +26,6 @@ docker buildx build \
     --build-arg timeZone="$timeZone" \
     --network host \
     -f docker/Dockerfile \
+	"$@" \
     ${projRoot}
 # --progress=plain --no-cache \
