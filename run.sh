@@ -47,9 +47,9 @@ echo "Log in gh with 'msi' token..."
 gh auth login --with-token
 
 gitconfigStr="\
-[credential "https://github.com"]
+[credential \"https://github.com\"]
 	helper = !/usr/bin/env gh auth git-credential
-[credential "https://gist.github.com"]
+[credential \"https://gist.github.com\"]
 	helper = !/usr/bin/env gh auth git-credential
 "
 
