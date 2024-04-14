@@ -8,3 +8,7 @@ export projRoot="`pwd`"
 if [ -z "$timezone" ]; then
 	export timeZone="`cat /etc/timezone`"
 fi
+
+if [ -z "$msiGhKey" ]; then
+	export $msiGhKey="`cat ${HOME}/Downloads/gh_msi-token.txt`"
+fi

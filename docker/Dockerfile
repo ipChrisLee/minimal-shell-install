@@ -7,6 +7,7 @@ ARG HTTPS_PROXY
 ARG ALL_PROXY
 ARG NO_PROXY
 ARG timeZone
+ARG msiGhKey
 
 # ------------ directories ------------
 # ---- docker workdir
@@ -29,7 +30,6 @@ RUN apt-get install nano curl -y
 RUN apt-get install tzdata -y
 RUN if [ -n "$timeZone" ]; then echo "$timeZone" > /etc/timezone; fi
 RUN if [ -n "$timeZone" ]; then ln -sf "/usr/share/zoneinfo/${timeZone}" /etc/localtime; fi
-
 
 # ------------ /etc/environment for env var ------------
 # ---- from /docker/workspace-env.sh.

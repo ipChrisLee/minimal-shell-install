@@ -33,7 +33,7 @@ if ! (check_exe gh); then
 fi
 
 if ! (check_exe zsh); then
-	sudo apt-get install zsh
+	sudo apt-get install zsh -y
 fi
 
 if [ ! -d "${HOME}/.oh-my-zsh" ]; then
@@ -42,7 +42,7 @@ fi
 
 # ------------ run ------------
 echo "Log in gh with 'msi' token..."
-gh auth login
+gh auth login --with-token <(echo $msiGhKey)
 
 echo "Cloning necassary repos..."
 cd ${HOME}; gh repo clone .iplee-conf; gh repo clone .iplee-exe

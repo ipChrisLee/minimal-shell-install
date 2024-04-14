@@ -12,6 +12,7 @@ echo "all_proxy=$all_proxy"
 echo "no_proxy=$no_proxy"
 
 echo "timeZone=$timeZone"
+echo "msiGhKey=$msiGhKey"
 
 echo "BEGIN DOCKER BUILD: "
 echo "===================="
