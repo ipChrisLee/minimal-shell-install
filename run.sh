@@ -50,7 +50,9 @@ echo "Cloning necassary repos..."
 cd ${HOME}; gh repo clone .iplee-conf; gh repo clone .iplee-exe
 
 # ---- .iplee-conf
-cd ${HOME}/.iplee-conf; git fetch origin; git checkout "${ipleeConfHash}"
+cd ${HOME}/.iplee-conf
+git fetch origin
+git checkout "${ipleeConfHash}"
 self-conf/configure-omz.sh
 self-conf/configure-hconf.sh
 # self-conf/configure-ssh-include-conf.sh
@@ -58,6 +60,8 @@ self-conf/install-nvim.sh
 self-conf/configure-nvim.sh
 
 # ---- .iplee-exe
-cd ${HOME}/.iplee-exe; git fetch origin; git checkout "${ipleeExeHash}"
+cd ${HOME}/.iplee-exe
+git fetch origin
+git checkout "${ipleeExeHash}"
 rm key/oog-proxy.sh
 self-install/install-oog-key-interactive.sh
