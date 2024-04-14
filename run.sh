@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-# -------- check exe --------
+# ------------ configs ------------
+export ipleeConfHash="21e892002d8efc71c4bbc42ee50036b834bd04ce"
+export ipleeExeHash="406449cd2330dcfd913107b7066c7aced9aeda28"
+
+# ------------ install nessasary packages ------------
+if ! (which sudo > /dev/null 2>&1); then
+	apt-get install sudo -y
+fi
+sudo apt-get install curl wget python3 -y
+
+# ------------ check/install exe ------------
 function check_exe {
 	if (which "$1" > /dev/null 2>&1); then
 		echo "Found $1"
@@ -18,12 +28,30 @@ if ! (check_exe gh); then
 		&& sudo apt update \
 		&& sudo apt install gh -y
 fi
-check_exe python3
 
+if ! (check_exe zsh); then
+	sudo apt-get install zsh
+fi
 
-# -------- run --------
+if [ ! -d "${HOME}/.oh-my-zsh" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+fi
+
+# ------------ run ------------
 echo "Log in gh with 'msi' token..."
 gh auth login
 
 echo "Cloning necassary repos..."
-gh repo
+cd ${HOME}; gh repo clone .iplee-conf; gh repo clone .iplee-exe
+
+# ---- .iplee-conf
+cd ${HOME}/.iplee-conf; git fetch origin; git checkout "${ipleeConfHash}"
+self-conf/configure-omz.sh
+self-conf/configure-hconf.sh
+# self-conf/configure-ssh-include-conf.sh
+self-conf/install-nvim.sh
+self-conf/configure-nvim.sh
+
+# ---- .iplee-exe
+cd ${HOME}/.iplee-exe; git fetch origin; git checkout "${ipleeConfHash}"
+self-install/install-oog-key-interactive.sh

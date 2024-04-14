@@ -1,3 +1,9 @@
+# minimal-shell-install
+
+## Intro
+
+**I public this repo in GitHub is just to make myself convenient. This is not a repo for open-source community.**
+
 Minimal shell develop environment installation for iplee.
 
 This project provide a simple, one-step way to install shell dev env. This is useful for docker container. By running this once, you can have greet shell dev env for development.
@@ -11,7 +17,15 @@ This installation only supports linux for now (i.e. only sync with linux-port fr
 To run this, just:
 ```
 bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
-
 ```
 
-I public this repo in GitHub is just to make myself convenient. This is not a repo for open-source community.
+## Proj structure
+
+README.md : this file.
+
+run.sh : one-file script for installation.
+
+docker : folder for test in docker.
+
+
+
