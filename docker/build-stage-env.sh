@@ -10,5 +10,5 @@ if [ -z "$timezone" ]; then
 fi
 
 if [ -z "$msiGhKey" ]; then
-	export $msiGhKey="`cat ${HOME}/Downloads/gh_msi-token.txt`"
+	export msiGhKey="`cat ${HOME}/Downloads/gh_msi-token.txt`"
 fi
