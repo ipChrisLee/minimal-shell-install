@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # ------------ configs ------------
 export ipleeConfHash="21e892002d8efc71c4bbc42ee50036b834bd04ce"
 export ipleeExeHash="406449cd2330dcfd913107b7066c7aced9aeda28"
