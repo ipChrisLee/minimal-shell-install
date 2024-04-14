@@ -42,15 +42,25 @@ if [ ! -d "${HOME}/.oh-my-zsh" ]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 fi
 
-# ------------ run ------------
+# ------------ gh clone and setup ------------
 echo "Log in gh with 'msi' token..."
 gh auth login --with-token
+
+gitconfigStr="\
+[credential "https://github.com"]
+	helper = !/usr/bin/env gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/env gh auth git-credential
+"
+
+echo "$gitconfigStr" > ${HOME}/.gitconfig
 
 echo "Cloning necassary repos..."
 cd ${HOME}; gh repo clone .iplee-conf; gh repo clone .iplee-exe
 
 # ---- .iplee-conf
 cd ${HOME}/.iplee-conf
+git fetch origin
 git checkout "${ipleeConfHash}"
 self-conf/configure-omz.sh
 self-conf/configure-hconf.sh
@@ -60,6 +70,7 @@ self-conf/configure-nvim.sh
 
 # ---- .iplee-exe
 cd ${HOME}/.iplee-exe
+git fetch origin
 git checkout "${ipleeExeHash}"
 rm key/oog-proxy.sh
 self-install/install-oog-key-interactive.sh
