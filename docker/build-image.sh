@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ ! -f "docker/anchor" ] || [ "`head -1 docker/anchor`" != "docker | msi-test-docker" ]; then echo "Anchor [docker] not found!"; exit 1; fi
+if [ ! -f "docker/anchor" ] || [ "$(head -1 docker/anchor)" != "docker | msi-test-docker" ]; then echo "Anchor [docker] not found!"; exit 1; fi
 
 source docker/build-stage-env.sh
 
