@@ -13,7 +13,7 @@ if ! (which sudo > /dev/null 2>&1); then
 else
 	sudo apt-get update
 fi
-sudo apt-get install curl git wget python3 build-essential -y
+sudo apt-get install curl git wget python3 -y
 
 # ------------ check/install exe ------------
 function check_exe {
