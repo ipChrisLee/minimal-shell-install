@@ -3,6 +3,12 @@
 set -e
 
 # ------------ configs ------------
+if [ -f "msi-config.sh" ]; then
+	source "msi-config.sh"
+else
+	echo "MSI [INFO]: not found msi-config.sh, using default configs, see run.sh for details."
+	export nvimTreesitterLangs="bash,diff,lua,markdown,python,yaml"
+fi
 export ipleeConfHash="linux-msi-port"
 export ipleeExeHash="master"
 
@@ -13,7 +19,7 @@ if ! (which sudo > /dev/null 2>&1); then
 else
 	sudo apt-get update
 fi
-sudo apt-get install curl git wget python3 build-essential -y
+sudo apt-get install curl git wget sed -y
 
 # ------------ check/install exe ------------
 function check_exe {
@@ -66,7 +72,7 @@ self-conf/configure-omz.sh
 self-conf/configure-hconf.sh
 # self-conf/configure-ssh-include-conf.sh
 self-conf/install-nvim.sh
-self-conf/configure-nvim.sh
+. self-conf/configure-nvim.sh # . is for using env vars in this script.
 
 # ---- .iplee-exe
 cd ${HOME}/.iplee-exe
