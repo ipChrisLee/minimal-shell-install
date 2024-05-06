@@ -18,7 +18,7 @@ echo "BEGIN DOCKER BUILD: "
 echo "===================="
 
 docker buildx build \
-	--tag msi-test-image \
+	--tag msi-test_image \
     --build-arg HTTP_PROXY="$http_proxy" \
     --build-arg HTTPS_PROXY="$https_proxy" \
     --build-arg ALL_PROXY="$all_proxy" \
