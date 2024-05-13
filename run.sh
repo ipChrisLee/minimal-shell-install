@@ -5,9 +5,17 @@ set -e
 # ------------ configs ------------
 if [ -f "msi-config.sh" ]; then
 	source "msi-config.sh"
-else
-	echo "MSI [INFO]: not found msi-config.sh, using default configs, see run.sh for details."
+fi
+config_not_found_prompt() {
+	echo "MSI [INFO]: config \$$1 not found in msi-config.sh, using default configs, see run.sh for details."
+}
+if [ -z "$nvimTreesitterLangs" ]; then
+	config_not_found_prompt nvimTreesitterLangs
 	export nvimTreesitterLangs="bash,diff,lua,markdown,python,yaml"
+fi
+if [ -z "$noHostPrompt" ]; then
+	config_not_found_prompt noHostPrompt 
+	export noHostPrompt="y"
 fi
 export ipleeConfHash="linux-msi-port"
 export ipleeExeHash="master"
@@ -69,7 +77,7 @@ cd ${HOME}/.iplee-conf
 git fetch origin
 git checkout "${ipleeConfHash}"
 self-conf/configure-omz.sh
-self-conf/configure-hconf.sh
+. self-conf/configure-hconf.sh
 # self-conf/configure-ssh-include-conf.sh
 self-conf/install-nvim-from-archive.sh
 . self-conf/configure-nvim.sh # . is for using env vars in this script.
