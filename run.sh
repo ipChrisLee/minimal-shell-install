@@ -71,7 +71,7 @@ git checkout "${ipleeConfHash}"
 self-conf/configure-omz.sh
 self-conf/configure-hconf.sh
 # self-conf/configure-ssh-include-conf.sh
-self-conf/install-nvim.sh
+self-conf/install-nvim-from-archive.sh
 . self-conf/configure-nvim.sh # . is for using env vars in this script.
 
 # ---- .iplee-exe
