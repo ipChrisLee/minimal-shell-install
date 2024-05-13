@@ -15,7 +15,7 @@ if [ -z "$nvimTreesitterLangs" ]; then
 fi
 if [ -z "$noHostPrompt" ]; then
 	config_not_found_prompt noHostPrompt 
-	export noHostPrompt="y"
+	export noHostPrompt="n"
 fi
 export ipleeConfHash="linux-msi-port"
 export ipleeExeHash="master"
