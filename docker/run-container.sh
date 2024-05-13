@@ -8,5 +8,6 @@ docker run \
     --cap-add=SYS_PTRACE \
     --security-opt seccomp=unconfined \
     --restart=always \
+	--hostname=msi-test \
     -itd msi-test_image
 
