@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 # ------------ configs ------------
@@ -86,4 +85,3 @@ self-conf/install-nvim-from-archive.sh
 cd ${HOME}/.iplee-exe
 git fetch origin
 git checkout "${ipleeExeHash}"
-self-install/install-oog-key-interactive.sh
