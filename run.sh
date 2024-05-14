@@ -2,6 +2,10 @@
 set -e
 
 # ------------ configs ------------
+if [ -z "$ghMsiToken" ]; then
+	echo "Require ghMsiToken, please set as env var."
+	exit 1
+fi
 if [ -f "msi-config.sh" ]; then
 	source "msi-config.sh"
 fi
@@ -61,7 +65,7 @@ fi
 
 # ------------ gh clone and setup ------------
 echo "Log in gh with 'msi' token..."
-gh auth login --with-token
+echo "$ghMsiToken" | gh auth login --with-token
 
 gitconfigStr="\
 [credential \"https://github.com\"]
