@@ -16,6 +16,10 @@ if [ -z "$noHostPrompt" ]; then
 	config_not_found_prompt noHostPrompt 
 	export noHostPrompt="n"
 fi
+if [ -z "$isContainer" ]; then
+	config_not_found_prompt isContainer 
+	export isContainer="y"
+fi
 export ipleeConfHash="linux-msi-port"
 export ipleeExeHash="master"
 
