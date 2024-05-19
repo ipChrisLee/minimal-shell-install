@@ -12,7 +12,7 @@ echo "all_proxy=$all_proxy"
 echo "no_proxy=$no_proxy"
 
 echo "timeZone=$timeZone"
-echo "msiGhKey=$msiGhKey"
+echo "ghMsiToken=$ghMsiToken"
 
 echo "BEGIN DOCKER BUILD: "
 echo "===================="
@@ -24,6 +24,7 @@ docker buildx build \
     --build-arg ALL_PROXY="$all_proxy" \
     --build-arg NO_PROXY="$no_proxy" \
     --build-arg timeZone="$timeZone" \
+	--build-arg ghMsiToken="$ghMsiToken" \
     --network host \
     -f docker/Dockerfile \
 	"$@" \

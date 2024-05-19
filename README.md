@@ -14,14 +14,18 @@ This installation only supports linux for now (i.e. only sync with linux-port fr
 
 To run this, just:
 ```
-RUN bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
+ADD "https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh" /tmp/msi-install.sh
+RUN bash /tmp/msi-install.sh
+RUN rm /tmp/msi-install.sh
 ```
 
 To enable config, you can:
 ```
 RUN echo > msi-config.sh
 RUN echo 'nvimTreesitterLangs=bash,diff,lua,markdown,python,yaml' >> msi-config.sh
-RUN bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
+ADD "https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh" /tmp/msi-install.sh
+RUN bash /tmp/msi-install.sh
+RUN rm /tmp/msi-install.sh
 ```
 For all configs see `run.sh`.
 

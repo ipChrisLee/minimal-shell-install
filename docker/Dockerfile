@@ -7,7 +7,7 @@ ARG HTTPS_PROXY
 ARG ALL_PROXY
 ARG NO_PROXY
 ARG timeZone
-ARG msiGhKey
+ARG ghMsiToken
 
 # ------------ directories ------------
 # ---- docker workdir
@@ -42,7 +42,9 @@ RUN cat /tmp/workspace-env.sh >> /etc/environment
 RUN echo 'source /etc/environment' >> /root/.bashrc
 
 # ------------ minimal shell install ------------
-RUN bash <(curl -s https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh)
+ADD "https://raw.githubusercontent.com/ipChrisLee/minimal-shell-install/master/run.sh" /tmp/msi-install.sh
+RUN bash /tmp/msi-install.sh
+RUN rm /tmp/msi-install.sh
 
 # ------------ entrypoint ------------
 COPY /docker/entrypoint.sh /install
